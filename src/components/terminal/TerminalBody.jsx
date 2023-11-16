@@ -22,15 +22,23 @@ export const TerminalBody = ({ input, setInput, handleKeyPress, history, inputRe
         <div className="terminal-body">
             <div className="terminal-history">
                 {history.map((previousPrompt, index) => (
-                    <div key={index} className="input-container">
-                        <span className="prompt-sign">$</span>
-                        {previousPrompt}
-                    </div>
+                    <>
+                        <div className="current-location">
+                            ~/home
+                        </div>
+                        <div key={index} className="input-container">
+                            <span className="prompt-sign">❯</span>
+                            {previousPrompt}
+                        </div>
+                    </>
                 ))}
             </div>
             <div ref={endOfMessagesRef} />
+            <div className="current-location">
+                ~/home
+            </div>
             <div className="input-container">
-                <span className="prompt-sign">$</span>
+                <span className="prompt-sign">❯</span>
                 <textarea
                     value={input}
                     onChange={handleChange}

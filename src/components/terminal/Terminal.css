@@ -78,12 +78,19 @@
     gap: 8px;
 }
 
+.current-location {
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--teal);
+}
+
 .prompt-sign {
     font-size: 1em;
     line-height: 1.5;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: var(--green);
 }
 
 .terminal-input {
