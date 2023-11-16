@@ -12,6 +12,7 @@ const Terminal = ({ setShowTerminal }) => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
+            e.preventDefault();
             setHistory([...history, input]);
             setInput('');
         }

@@ -64,28 +64,46 @@
     border-radius: 10px;
 }
 
+.terminal-history {
+    word-break: break-word;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.input-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.prompt-sign {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .terminal-input {
+    flex: 1;
     background: none;
-    border: none;
+    border: none; 
+    font-size: 1em;
+    line-height: 1.5;
     color: var(--text);
     outline: none;
     caret-color: var(--cursor);
-    font-size: inherit;
     font-family: inherit;
     width: 90%;
     padding: 0;
+    margin: 0;
+    overflow: hidden;
+    resize: none;
+    box-sizing: border-box;
 }
 
 .terminal-input:not(:focus) {
     caret-color: transparent;
-}
-
-.terminal-input::after {
-    content: '|';
-    display: inline-block;
-    width: 1ch;
-    height: 1em;
-    margin-left: 2px;
-    background-color: var(--cursor);
-    animation: blink-animation 1s steps(5, start) infinite;
 }
