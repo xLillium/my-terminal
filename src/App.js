@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Terminal from './components/Terminal';
-import WelcomeScreen from './components/WelcomeScreen';
+import Terminal from './components/terminal/Terminal';
+import WelcomeScreen from './components/welcome-screen/WelcomeScreen';
 
 function App() {
     const [showTerminal, setShowTerminal] = useState(true);
