@@ -1,0 +1,77 @@
+.terminal {
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 5px;
+    padding: 20px;
+    padding-top: 0;
+    width: 80vw;
+    height: 80vh;
+    max-width: 1200px;
+    max-height: 600px;
+}
+
+.terminal-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: -webkit-fill-available;
+    border-radius: 0;
+}
+
+.terminal-header {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.terminal-button {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 0 5px;
+    border: none;
+}
+
+.red { background-color: var(--red); }
+.yellow { background-color: var(--yellow); }
+.green { background-color: var(--green); }
+
+.terminal-button:hover {
+    box-shadow: 0 0 2px var(--text), 0 0 10px var(--text), 0 0 20px var(--text);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.terminal-body {
+    color: var(--text);
+    text-align: left;
+    max-height: 80%;
+    overflow: auto;
+}
+
+.terminal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--background-secondary);
+    border-radius: 10px;
+}
+
+.blinking-cursor {
+    background-color: var(--cursor);
+    color: var(--cursor);
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    to { visibility: hidden; }
+}
+
+@-webkit-keyframes blink-animation {
+    to { visibility: hidden; }
+}
+

@@ -1,0 +1,28 @@
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    text-align: center;
+}
+
+.open-terminal-btn {
+    background-color: var(--background-secondary);
+    color: var(--mauve);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: var(--mauve);
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.open-terminal-btn:hover {
+    transform: scale(1.05);
+}

@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Terminal from './components/Terminal';
+import WelcomeScreen from './components/WelcomeScreen';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [showTerminal, setShowTerminal] = useState(true);
+
+    return (
+        <div className="App">
+            {showTerminal ? (
+                <Terminal setShowTerminal={setShowTerminal} />
+            ) : (
+                <WelcomeScreen setShowTerminal={setShowTerminal} />
+            )}
+        </div>
+    );
 }
 
 export default App;
