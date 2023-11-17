@@ -4,7 +4,7 @@ import './Terminal.css';
 import { TerminalBody } from './TerminalBody';
 import { TerminalHeader } from './TerminalHeader';
 
-const Terminal = ({ setShowTerminal }) => {
+const Terminal = ({ setShowTerminal, showTerminal }) => {
     const [input, setInput] = useState('');
     const [history, setHistory] = useState([]);
     const inputRef = useRef(null);
@@ -28,7 +28,7 @@ const Terminal = ({ setShowTerminal }) => {
 
     useEffect(() => {
         focusInput();
-    }, []);
+    }, [showTerminal]);
 
     return (
         <div className={`terminal ${isFullScreen ? 'terminal-fullscreen' : ''}`} onClick={focusInput}>

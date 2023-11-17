@@ -6,13 +6,17 @@ import WelcomeScreen from './components/welcome-screen/WelcomeScreen';
 function App() {
     const [showTerminal, setShowTerminal] = useState(true);
 
+    const terminalClass = showTerminal ? '' : 'hide-element';
+    const welcomeScreenClass = showTerminal ? 'hide-element' : '';
+
     return (
         <div className="App">
-            {showTerminal ? (
-                <Terminal setShowTerminal={setShowTerminal} />
-            ) : (
+            <div className={terminalClass}>
+                <Terminal setShowTerminal={setShowTerminal} showTerminal={showTerminal} />
+            </div>
+            <div className={welcomeScreenClass}>
                 <WelcomeScreen setShowTerminal={setShowTerminal} />
-            )}
+            </div>
         </div>
     );
 }
