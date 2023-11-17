@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 export const TerminalHeader = ({ setShowTerminal, onFullScreenChange }) => {
@@ -24,6 +24,21 @@ export const TerminalHeader = ({ setShowTerminal, onFullScreenChange }) => {
             onFullScreenChange(false);
         }
     };
+
+    useEffect(() => {
+        const handleFullScreenChange = () => {
+            const isFullScreen = !!document.fullscreenElement;
+            onFullScreenChange(isFullScreen);
+        };
+
+        document.addEventListener('fullscreenchange', handleFullScreenChange);
+
+        return () => {
+            document.removeEventListener('fullscreenchange', handleFullScreenChange);
+        };
+
+    }, [onFullScreenChange]);
+
 
     return (
         <div className="terminal-header">
