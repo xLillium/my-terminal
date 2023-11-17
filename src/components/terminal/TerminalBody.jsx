@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { TerminalHistory } from './TerminalHistory';
+import { TerminalPrompt } from './TerminalPrompt';
+import useInputChange from '../../hooks/useInputChange';
 
 
 export const TerminalBody = ({ input, setInput, handleKeyPress, history, inputRef }) => {
     const endOfMessagesRef = useRef(null);
+    const handleChange = useInputChange(inputRef, setInput);
 
     useEffect(() => {
         if (isEndOfMessagesRefCurrent(endOfMessagesRef)) {
@@ -12,42 +16,17 @@ export const TerminalBody = ({ input, setInput, handleKeyPress, history, inputRe
         }
     }, [history]);
 
-    const handleChange = (e) => {
-        setInput(e.target.value);
-        inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
-        inputRef.current.rows = 1;
-    };
 
     return (
         <div className="terminal-body">
-            <div className="terminal-history">
-                {history.map((previousPrompt, index) => (
-                    <>
-                        <div className="current-location">
-                            ~/home
-                        </div>
-                        <div key={index} className="input-container">
-                            <span className="prompt-sign">❯</span>
-                            {previousPrompt}
-                        </div>
-                    </>
-                ))}
-            </div>
+            <TerminalHistory history={history} />
             <div ref={endOfMessagesRef} />
-            <div className="current-location">
-                ~/home
-            </div>
-            <div className="input-container">
-                <span className="prompt-sign">❯</span>
-                <textarea
-                    value={input}
-                    onChange={handleChange}
-                    onKeyPress={handleKeyPress}
-                    className="terminal-input"
-                    ref={inputRef}
-                    autoFocus
-                ></textarea>
-            </div>
+            <TerminalPrompt
+                input={input}
+                handleChange={handleChange}
+                handleKeyPress={handleKeyPress}
+                inputRef={inputRef}
+            />
         </div>
     );
 }
