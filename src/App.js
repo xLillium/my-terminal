@@ -7,14 +7,13 @@ function App() {
     const [showTerminal, setShowTerminal] = useState(true);
 
     const terminalClass = showTerminal ? '' : 'hide-element';
-    const welcomeScreenClass = showTerminal ? 'hide-element' : '';
 
     return (
         <div className="App">
             <div className={terminalClass}>
                 <Terminal setShowTerminal={setShowTerminal} showTerminal={showTerminal} />
             </div>
-            <div className={welcomeScreenClass}>
+            <div>
                 <WelcomeScreen setShowTerminal={setShowTerminal} />
             </div>
         </div>
