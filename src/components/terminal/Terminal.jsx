@@ -3,27 +3,23 @@ import PropTypes from 'prop-types';
 import './Terminal.css';
 import { TerminalBody } from './TerminalBody';
 import { TerminalHeader } from './TerminalHeader';
+import { useDraggable } from '../../hooks/useDraggable';
 
 const Terminal = ({ setShowTerminal, showTerminal }) => {
     const [input, setInput] = useState('');
     const [history, setHistory] = useState([]);
     const inputRef = useRef(null);
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [isDragging, setIsDragging] = useState(false);
-    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
     const terminalRef = useRef(null);
     const [originalPosition, setOriginalPosition] = useState(null);
 
+    const { position, setPosition, isDragging, handleMouseDown } = useDraggable({ x: 0, y: 0 }, terminalRef);
+
     useEffect(() => {
-        // Center the terminal on initial load
         const centerX = (window.innerWidth - terminalRef.current.offsetWidth) / 2;
         const centerY = (window.innerHeight - terminalRef.current.offsetHeight) / 2;
         setPosition({ x: centerX, y: centerY });
-    }, []);
-
-
-
+    }, [setPosition]);
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -31,21 +27,18 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
             setHistory([...history, input]);
             setInput('');
         }
-        if (isFullScreen) {
-            // Store the current position before going full screen
-            if (!originalPosition) {
-                setOriginalPosition(position);
-            }
-            // Center the terminal when entering full screen
-            setPosition({ x: 0, y: 0 });
-        } else if (originalPosition) {
-            // Restore the original position when exiting full screen
-            setPosition(originalPosition);
-            setOriginalPosition(null); // Reset original position
-        }
     };
 
     const handleFullScreenChange = (isFullScreen) => {
+        if (isFullScreen) {
+            if (!originalPosition) {
+                setOriginalPosition(position);
+            }
+            setPosition({ x: 0, y: 0 });
+        } else if (originalPosition) {
+            setPosition(originalPosition);
+            setOriginalPosition(null);
+        }
         setIsFullScreen(isFullScreen);
     };
 
@@ -53,48 +46,9 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
         inputRef.current.focus();
     };
 
-    const handleMouseDown = (e) => {
-        if (e.target.classList.contains('terminal-header')) {
-            setIsDragging(true);
-            const rect = terminalRef.current.getBoundingClientRect();
-            setDragOffset({
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top
-            });
-        }
-    };
-
-    const handleMouseMove = (e) => {
-        if (isDragging) {
-            const newX = e.clientX - dragOffset.x;
-            const newY = e.clientY - dragOffset.y;
-            const rect = terminalRef.current.getBoundingClientRect();
-
-            // Ensure the terminal stays within the viewport
-            const maxX = window.innerWidth - rect.width;
-            const maxY = window.innerHeight - rect.height;
-
-            setPosition({
-                x: Math.max(0, Math.min(newX, maxX)),
-                y: Math.max(0, Math.min(newY, maxY))
-            });
-        }
-    };
-
-    const handleMouseUp = () => {
-        setIsDragging(false);
-    };
-
     useEffect(() => {
         focusInput();
-        document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseup', handleMouseUp);
-
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseup', handleMouseUp);
-        };
-    }, [showTerminal, isDragging]);
+    }, [showTerminal]);
 
     return (
         <div

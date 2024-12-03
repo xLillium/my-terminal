@@ -51,6 +51,6 @@ export const TerminalHeader = ({ setShowTerminal, onFullScreenChange }) => {
 
 TerminalHeader.propTypes = {
     setShowTerminal: PropTypes.func.isRequired,
-    onFullScreenChange: PropTypes.func.isRequired, // Add this line
+    onFullScreenChange: PropTypes.func.isRequired,
 };
 
