@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# My Terminal Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB.svg?logo=react&logoColor=white)
 
-## Available Scripts
+## 🚀 Overview
 
-In the project directory, you can run:
+**My Terminal Portfolio** is an interactive web application that simulates a terminal experience to showcase my professional profile and skills. The project replicates the look, feel, and functionality of my daily command-line interface while providing a unique way to navigate my curriculum.
 
-### `npm start`
+### ✨ Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Visit the live demo at [https://xlillium.github.io/my-terminal](https://xlillium.github.io/my-terminal)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📋 Features
+- **Interactive Terminal Interface**: A fully functional, draggable terminal emulator with command history
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Full-Screen Mode**: Enhanced viewing experience with a toggle for full-screen mode
+- **Modern UI**: Beautiful Catppuccin Mocha color scheme with smooth animations
 
-### `npm test`
+## Future Improvements
+- **Custom Command Set**: Navigate my resume, projects, and experiences through intuitive terminal commands
+- `help` - Display available commands
+- `about` - Learn about me
+- `skills` - View my technical skills
+- `projects` - See my portfolio projects
+- `experience` - Review my work experience
+- `education` - Check my educational background
+- `contact` - Find ways to contact me
+- `clear` - Clear the terminal screen
+- `exit` - Exit the terminal (redirects to LinkedIn)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 🛠️ Technology Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React.js**: Frontend framework for building the user interface
+- **CSS**: Custom styling with CSS variables for theming
+- **GitHub Pages**: Hosting platform for deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚦 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js (v14.0.0 or later)
+- npm or yarn package manager
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/YourUsername/my-terminal.git
+cd my-terminal
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install dependencies:
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+The application will be available at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎮 Usage
 
-### Analyzing the Bundle Size
+### Basic Navigation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Use the terminal input to type commands
+- Press `Enter` to execute a command
+- Command history is displayed and preserved during your session
+- Use the colored buttons in the header to minimize, maximize, or close the terminal
 
-### Making a Progressive Web App
+## 🧪 Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Run the test suite with:
 
-### Advanced Configuration
+```bash
+npm test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📦 Deployment
 
-### Deployment
+Deploy to GitHub Pages with:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm run deploy
+```
 
-### `npm run build` fails to minify
+This will build the project and push it to the `gh-pages` branch of this repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 🔄 Roadmap
+
+- [ ] Add support for interactive commands
+- [ ] Implement file system navigation
+- [ ] Add tab completion for commands
+
+## 📜 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👏 Acknowledgments
+
+- Color scheme based on [Catppuccin Mocha](https://github.com/catppuccin/catppuccin)
+
+---
+
+<p align="center">Made with ❤️ by <a href="https://github.com/xlillium">xlillium</a></p>
