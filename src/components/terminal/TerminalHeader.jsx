@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { URLS, MESSAGES, EVENTS } from '../../constants/terminalConstants';
+import { EVENTS } from '../../constants/terminalConstants';
 import { processCommand } from '../../services/commandService';
 import { COMMANDS } from '../../constants/commandConstants';
 
