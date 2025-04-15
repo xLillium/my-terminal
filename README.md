@@ -110,3 +110,12 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 <p align="center">Made with ❤️ by <a href="https://github.com/xlillium">xlillium</a></p>
+
+but also...
+<div align="center">
+  <h3>🌈✨ The <code>vibe/no-thinking-allowed</code> Branch ✨🌈</h3>
+  <p>Where code meets pure vibes! This experimental branch was created through <b>100% pair-programming with AI</b>.<br/>
+  No overthinking, just immaculate vibes and clean code.</p>
+  <p><i>💫 "We're not coding, we're digital jamming" 💫</i></p>
+  <img src="https://img.shields.io/badge/VIBE%20LEVEL-MAXIMUM-blueviolet?style=for-the-badge&logoColor=white" alt="VIBE LEVEL: MAXIMUM" />
+</div>
