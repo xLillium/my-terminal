@@ -1,3 +1,23 @@
+/* Add additional color variables for response types */
+:root {
+    --background: #1E1E2E;
+    --background-secondary: #11111B;
+    --text: #CDD6F4;
+    --cursor: #F5E0DC;
+    --red: #F38BA8;
+    --green: #A6E3A1;
+    --yellow: #F9E2AF;
+    --mauve: #CBA6F7;
+    --teal: #94E2D5;
+    --blue: #89B4FA;
+    --lavender: #B4BEFE;
+    --peach: #FAB387;
+    --rosewater: #F5E0DC;
+    --flamingo: #F2CDCD;
+    --pink: #F5C2E7;
+    --sapphire: #74C7EC;
+}
+
 .terminal {
     background-color: var(--background);
     color: var(--text);
@@ -126,4 +146,286 @@
 
 .terminal-input:not(:focus) {
     caret-color: transparent;
+}
+
+/* Command and response styling */
+.command-entry {
+    margin-bottom: 16px;
+}
+
+.command-line {
+    display: flex;
+    flex-direction: row;
+}
+
+.command-text {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.response-content {
+    margin-left: 20px;
+    margin-top: 4px;
+    color: var(--teal);
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+/* Different colors for different response types */
+.response-content.response-help {
+    color: var(--lavender);
+}
+
+.response-content.response-about {
+    color: var(--sapphire);
+}
+
+.response-content.response-skills {
+    color: var(--mauve);
+}
+
+.response-content.response-experience {
+    color: var(--blue);
+}
+
+.response-content.response-education {
+    color: var(--peach);
+}
+
+.response-content.response-contact {
+    color: var(--pink);
+}
+
+.response-content.response-error {
+    color: var(--red);
+}
+
+.response-content.response-welcome {
+    color: var(--rosewater);
+}
+
+/* Welcome message styling */
+.welcome-title {
+    color: var(--mauve);
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.welcome-name {
+    color: var(--green);
+    font-weight: bold;
+}
+
+.welcome-divider {
+    color: var(--lavender);
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+.welcome-description {
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.welcome-instruction {
+    color: var(--sapphire);
+    margin-bottom: 2px;
+}
+
+.welcome-tip {
+    color: var(--yellow);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* Help command styling */
+.help-title {
+    color: var(--mauve);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.help-command-line {
+    margin: 2px 0;
+}
+
+.help-separator {
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.help-description {
+    color: var(--blue);
+}
+
+/* Skills styling */
+.section-title {
+    color: var(--mauve);
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+.skill-category {
+    color: var(--sapphire);
+    font-weight: 500;
+}
+
+.skill-item {
+    color: var(--peach);
+    margin-right: 4px;
+}
+
+/* About me styling */
+.about-intro {
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.highlight-name {
+    color: var(--green);
+    font-weight: bold;
+}
+
+.about-description {
+    color: var(--sapphire);
+}
+
+.about-paragraph {
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.highlight-keyword {
+    color: var(--yellow);
+    font-weight: 500;
+}
+
+/* Experience and education styling */
+.experience-section-title, .education-section-title {
+    color: var(--mauve);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.title-line {
+    margin-bottom: 4px;
+}
+
+.job-title, .degree-title {
+    color: var(--green);
+    font-weight: 500;
+}
+
+.company-name, .school-name {
+    color: var(--peach);
+}
+
+.separator {
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.time-period {
+    color: var(--lavender);
+}
+
+.bullet-point {
+    margin-left: 12px;
+    margin-bottom: 2px;
+    display: flex;
+}
+
+.bullet {
+    color: var(--pink);
+    margin-right: 8px;
+}
+
+.description {
+    color: var(--text);
+}
+
+/* Contact styling */
+.contact-title {
+    color: var(--mauve);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.contact-line {
+    margin-bottom: 4px;
+}
+
+.contact-method {
+    color: var(--green);
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.contact-value {
+    color: var(--sapphire);
+}
+
+/* Error message styling */
+.error-message {
+    color: var(--red);
+}
+
+.error-command {
+    color: var(--peach);
+    font-weight: 500;
+}
+
+.error-help {
+    color: var(--text);
+}
+
+.response-content pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Command highlight styles */
+.highlight-command {
+    color: var(--lavender);
+    font-weight: bold;
+}
+
+.highlight-option {
+    color: var(--peach);
+}
+
+.highlight-value {
+    color: var(--green);
+}
+
+/* Prompt style */
+.prompt-sign {
+    color: var(--green);
+    margin-right: 8px;
+}
+
+/* Add styling for input focus state */
+.terminal-input:focus {
+    outline: none;
+    border-color: var(--mauve);
+}
+
+/* Add subtle animation for new responses */
+.response-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

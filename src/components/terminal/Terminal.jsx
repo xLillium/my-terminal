@@ -5,6 +5,7 @@ import { TerminalBody } from './TerminalBody';
 import { TerminalHeader } from './TerminalHeader';
 import { useDraggable } from '../../hooks/useDraggable';
 import { TERMINAL_POSITION, CSS_CLASSES } from '../../constants/terminalConstants';
+import { processCommand, formatCommandResponse } from '../../services/commandService';
 
 const Terminal = ({ setShowTerminal, showTerminal }) => {
     const [input, setInput] = useState('');
@@ -13,6 +14,7 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const terminalRef = useRef(null);
     const [originalPosition, setOriginalPosition] = useState(null);
+    const [isInitialized, setIsInitialized] = useState(false);
 
     const { position, setPosition, isDragging, handleMouseDown } = useDraggable(TERMINAL_POSITION.INITIAL, terminalRef);
 
@@ -30,11 +32,46 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
         centerTerminal();
     }, [centerTerminal]);
 
+    // Update the welcome message
+    useEffect(() => {
+        if (!isInitialized && showTerminal) {
+            const welcomeMessage = `
+Welcome to Nicolas Motillon's Terminal Portfolio!
+==============================================
+
+This interactive terminal allows you to explore my background, 
+skills, and experience using simple commands.
+
+Type 'help' to see available commands.
+Use ↑/↓ arrows to navigate command history.
+Press Tab to autocomplete commands.
+
+Start by typing 'about' to learn more about me.
+            `.trim();
+            
+            setHistory([welcomeMessage]);
+            setIsInitialized(true);
+        }
+    }, [showTerminal, isInitialized]);
+
     // Handle terminal input submission
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            setHistory([...history, input]);
+            
+            // Process the submitted command
+            if (input.trim()) {
+                const result = processCommand(input, setHistory, setShowTerminal);
+                
+                if (!result.shouldClear) {
+                    // Only add to history if not clearing
+                    setHistory(prevHistory => [
+                        ...prevHistory, 
+                        formatCommandResponse(input, result.text)
+                    ]);
+                }
+            }
+            
             setInput('');
         }
     };

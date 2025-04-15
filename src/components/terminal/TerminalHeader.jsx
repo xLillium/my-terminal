@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { URLS, MESSAGES, EVENTS } from '../../constants/terminalConstants';
+import { processCommand } from '../../services/commandService';
+import { COMMANDS } from '../../constants/commandConstants';
 
 export const TerminalHeader = ({ setShowTerminal, onFullScreenChange }) => {
     // Handle quit with confirmation and redirect
     const handleExitClick = () => {
-        const userConfirmedQuit = window.confirm(MESSAGES.QUIT_CONFIRMATION);
-        if (userConfirmedQuit) {
-            window.location.href = URLS.LINKEDIN;
-        }
+        // Use the same exit command logic from our command service
+        processCommand(COMMANDS.EXIT, null, setShowTerminal);
     };
 
     const handleMinimizeClick = () => setShowTerminal(false);
