@@ -1,0 +1,8 @@
+# Ignore CSS files
+**/*.css
+# Ignore build directory
+build/
+# Ignore node_modules
+node_modules/
+# Ignore coverage reports
+coverage/ 

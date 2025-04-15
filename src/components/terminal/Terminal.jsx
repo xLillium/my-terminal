@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './Terminal.css';
 import { TerminalBody } from './TerminalBody';
 import { TerminalHeader } from './TerminalHeader';
 import { useDraggable } from '../../hooks/useDraggable';
+import { TERMINAL_POSITION, CSS_CLASSES } from '../../constants/terminalConstants';
 
 const Terminal = ({ setShowTerminal, showTerminal }) => {
     const [input, setInput] = useState('');
@@ -13,14 +14,23 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
     const terminalRef = useRef(null);
     const [originalPosition, setOriginalPosition] = useState(null);
 
-    const { position, setPosition, isDragging, handleMouseDown } = useDraggable({ x: 0, y: 0 }, terminalRef);
+    const { position, setPosition, isDragging, handleMouseDown } = useDraggable(TERMINAL_POSITION.INITIAL, terminalRef);
 
-    useEffect(() => {
+    // Helper function to center the terminal in the viewport
+    const centerTerminal = useCallback(() => {
+        if (!terminalRef.current) return;
+        
         const centerX = (window.innerWidth - terminalRef.current.offsetWidth) / 2;
         const centerY = (window.innerHeight - terminalRef.current.offsetHeight) / 2;
         setPosition({ x: centerX, y: centerY });
-    }, [setPosition]);
+    }, [terminalRef, setPosition]);
 
+    // Center the terminal in the viewport on initial render
+    useEffect(() => {
+        centerTerminal();
+    }, [centerTerminal]);
+
+    // Handle terminal input submission
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -29,15 +39,13 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
         }
     };
 
+    // Save position before fullscreen and restore after exiting
     const handleFullScreenChange = (isFullScreen) => {
         if (isFullScreen) {
-            if (!originalPosition) {
-                setOriginalPosition(position);
-            }
+            saveOriginalPosition();
             setPosition({ x: 0, y: 0 });
-        } else if (originalPosition) {
-            setPosition(originalPosition);
-            setOriginalPosition(null);
+        } else {
+            restoreOriginalPosition();
         }
         setIsFullScreen(isFullScreen);
     };
@@ -46,14 +54,30 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
         inputRef.current.focus();
     };
 
+    // Focus input field whenever terminal is shown
     useEffect(() => {
         focusInput();
     }, [showTerminal]);
 
+    // Save current position before going fullscreen
+    const saveOriginalPosition = () => {
+        if (!originalPosition) {
+            setOriginalPosition(position);
+        }
+    };
+
+    // Restore original position after exiting fullscreen
+    const restoreOriginalPosition = () => {
+        if (originalPosition) {
+            setPosition(originalPosition);
+            setOriginalPosition(null);
+        }
+    };
+
     return (
         <div
             ref={terminalRef}
-            className={`terminal ${isFullScreen ? 'terminal-fullscreen' : ''}`}
+            className={`terminal ${isFullScreen ? CSS_CLASSES.TERMINAL_FULLSCREEN : ''}`}
             style={{
                 position: 'absolute',
                 left: `${position.x}px`,
@@ -71,6 +95,7 @@ const Terminal = ({ setShowTerminal, showTerminal }) => {
 
 Terminal.propTypes = {
     setShowTerminal: PropTypes.func.isRequired,
+    showTerminal: PropTypes.bool.isRequired,
 };
 
 export default Terminal;
